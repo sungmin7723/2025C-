@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
+
+namespace Week07Homework
+{
+    internal class Product
+    {
+        public string Pcode;
+        public string Pname;
+        public int price;
+        public int stock;
+        public DateTime RegDate;
+
+
+        public string tostring()
+
+        {
+            // 상품 코드와 이름을 조합해서 반환
+            return $"[{Pcode}] {Pname}";
+        }
+
+        public int SalePrice()
+        {
+            // 현재날짜가 상품등록일보다 30일 이후라면 20 % 할인된 가격을 반환, 그렇지 않으면 등록한 가격을 반환;
+            if (DateTime.Now > RegDate.AddDays(30)) {
+                return (int)(price * 0.8);
+            }
+            else {
+                return price;
+            }
+        }
+
+        public int CalPrice(int count)
+        {
+            // 개수(count)에 상품가격(혹은 할인가격) 을 곱해서 반환한다.
+            return count * price;
+        }
+
+    }
+}
