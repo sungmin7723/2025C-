@@ -1,0 +1,29 @@
+ using System;
+ namespace Week07Homework
+ {
+    class Product
+    {
+        public string Code;
+        public string Name;
+        public int Price;
+        public int Stock;
+        public DateTime RegDate;
+        public override string ToString()
+        {
+            return $"[{Code}] {Name}";
+        }
+        public int SalePrice()
+        {
+            TimeSpan diff = DateTime.Now - RegDate;
+            if (diff.TotalDays > 30) {
+                return (int)(Price * 0.8);
+            } else {
+                return Price;
+            }
+        }
+        public int CalPrice(int count)
+        {
+            return SalePrice() * count;
+        }
+    }
+ }
